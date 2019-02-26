@@ -6,7 +6,6 @@
         /**
          * read data from textarea, prints validation message if needed
          */
-        var operationsCounter;
         function readData() {
             let inputArray = document.getElementById('inputArray').value.replace(new RegExp('\n', 'g'), '').split(',').map(item => parseInt(item))
             let isValid = true;
@@ -26,9 +25,7 @@
         function clearPreviousResults() {
             document.getElementById('sortedArray').value='';
             document.getElementById('validationError').innerHTML='';
-            document.getElementById('numberOfOperations').innerHTML='';
             document.getElementById('numberOfElements').innerText = '';
-            operationsCounter = 0;
         }
 
         function processSorting() {
@@ -38,7 +35,6 @@
                 var sortedArray = mergeSort(inputArray, 0, inputArray.length - 1);
                 //print results
                 document.getElementById('sortedArray').value = sortedArray.join(', ');
-                document.getElementById('numberOfOperations').innerHTML = operationsCounter;
                 document.getElementById('numberOfElements').innerHTML = inputArray.length;
             }
         }
@@ -58,7 +54,6 @@
                 let leftIndex = 0;
                 let rightIndex = 0;
                 while (leftIndex < leftTemp.length && rightIndex < rightTemp.length) {
-                    operationsCounter++;
                     if (leftTemp[leftIndex] < rightTemp[rightIndex]) {
                         result.push(leftTemp[leftIndex]);
                         leftIndex++;
@@ -68,12 +63,10 @@
                     }
                 }
                 while (leftIndex < leftTemp.length) {
-                    operationsCounter++;
                     result.push(leftTemp[leftIndex]);
                     leftIndex++;
                 }
                 while (rightIndex < rightTemp.length) {
-                    operationsCounter++;
                     result.push(rightTemp[rightIndex]);
                     rightIndex++;
                 }
@@ -95,7 +88,7 @@
     <h1>Output:</h1>
     <textarea rows="10" cols="100" id="sortedArray"></textarea>
     <p>Number of elements (n): <span style="color: blue" id="numberOfElements"/></p>
-    <p>Number of operations (O(n)): <span id="numberOfOperations"/> </p>
+    <p>Complexity O(n): log(n)</p>
     <p><span style="color: red" id="validationError"/></p>
 </div>
 
