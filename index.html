@@ -43,9 +43,11 @@
          * core of the algo, that process sorting using merge sort algo:
          * https://en.wikipedia.org/wiki/Merge_sort
          */
-        function mergeSort(arr, left, right) {
+        function quickSort(arr, left, right) {
             let result = [];
+
             if (left < right) {
+                //
                 let middle = Math.floor((left + right) / 2);
                 let leftTemp = mergeSort(arr, left, middle) ;
                 let rightTemp = mergeSort(arr, middle + 1, right);
